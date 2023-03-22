@@ -99,3 +99,55 @@ display: flex;
   height: 43px;
   margin-right: 20px;
 }
+
+
+@media (max-width:767px) {
+
+  .life_ins_plans h2{
+    display: flex;
+    justify-content: center;
+    color: #1C86F0;
+    font-size: 22px;
+    margin-left: 0px;
+  }
+  .product_details{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin-top: 70px;
+    padding: 20px;
+    margin-left: 0px;
+  }
+  .product_logo{
+    position: absolute;
+    height: 125px;
+    width: 246px;
+    /* margin-top: 250px;
+    margin-left: -10px; */
+    top: 310px;
+    left: 12px;
+  }
+  .product_img{
+    width: 320px;
+    height: 300px;
+  }
+  .product_details_descr{
+    background-color: #FFFFFF;
+    padding: 30px;
+    height: 439px;
+    width: 320px;
+  }
+  .common_button{
+    margin-top: 8px;
+    padding: 20px;
+    display: flex;
+    width: 118px;
+    height: 55px;
+  }
+  .key_benefits{
+    margin-left: 16px;
+    color: #8C8C8C;
+    font-size: 16px;
+    line-height: 22px;
+   }
+}

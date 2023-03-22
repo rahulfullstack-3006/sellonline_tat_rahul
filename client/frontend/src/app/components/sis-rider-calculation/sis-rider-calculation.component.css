@@ -287,16 +287,31 @@
   display: flex;
   margin-top: 12px;
   background: #e4f2ff;
+  width: 100%;
+    padding: 15px;
 }
 .rider_prem_gst{
   margin-right: 56px;
   border-right: 1px solid gray;
+  width: 50%;
 }
 .rider_prem_gst span{
   margin: 20px;
 }
 .wellness_with_logo{
 display: flex;
+}
+.discount_wellness{
+  display: flex;
+  flex-direction: column;
+  width: 44%;
+}
+.amount_button{
+  display: flex;
+  justify-content: space-between;
+}
+.update_changes .btn{
+padding: 5px;
 }
 .main_rider_premium{
   display: flex;
@@ -359,6 +374,7 @@ color: #8C8C8C;
 .final_premium{
   display: flex;
   border-bottom: 1px dotted #dadada;
+  justify-content: space-between;
 }
 .final_amount{
   font-size: 12px;

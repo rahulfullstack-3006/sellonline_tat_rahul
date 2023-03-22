@@ -14,7 +14,7 @@
 
 
 const mongoose=require('mongoose');
-mongoose.connect('mongodb://localhost:27017/master_project',{
+mongoose.connect('mongodb://localhost:27017/insurance',{
 useNewUrlParser: true,
 useUnifiedTopology: true});
 
