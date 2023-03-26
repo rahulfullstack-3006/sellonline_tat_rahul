@@ -14,7 +14,7 @@ export class AuthguardService {
   console.log("isAuthenticated",isAuthenticated);
   
   if(!isAuthenticated){
-    this.router.navigate(['login'])
+    this.router.navigate(['/login'])
   }
   return isAuthenticated
 

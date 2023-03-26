@@ -24,6 +24,7 @@ import { SisRiderCalculationComponent } from './components/sis-rider-calculation
 import { MatIconModule } from '@angular/material/icon';
 import { InterceptorService } from './services/interceptor.service';
 import { AuthguardService } from './services/authguard.service';
+import { TokenInterceptor } from './services/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -56,9 +57,12 @@ import { AuthguardService } from './services/authguard.service';
   providers: [
     AuthguardService,
     {provide:LocationStrategy,useClass:PathLocationStrategy},
-    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
+    {provide:HTTP_INTERCEPTORS,useClass:TokenInterceptor,multi:true},
+    // { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
     MainService,
-    InterceptorService
+    TokenInterceptor,
+    AuthguardService
+    // InterceptorService
   ],
   bootstrap: [AppComponent]
 })

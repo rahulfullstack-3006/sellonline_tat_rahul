@@ -553,14 +553,23 @@ module.exports.registerusingMongo=async function(req,resp){
     password:bcryptPassword
   })
   console.log("signupSchema",signupSchema);
-  try{
-    let data =await signupSchema.save();
-    console.log("data for register",data);
-    return data;
+  console.log("req.body.email",req.body.email);
+  let userCreated=await SignupSchema.findOne({email:req.body.email});
+  console.log("userCreated",userCreated);
+
+  if (!userCreated) {
+    try{
+      let data =await signupSchema.save();
+      console.log("data for register",data);
+      return data;
+    }
+    catch(err){
+      return err
+    }
+  }else{
+    return {status:'false',message:'Email Already exits'} 
   }
-  catch(err){
-    return err
-  }
+
 }
 
 /**************register api using mongodb end*********************/

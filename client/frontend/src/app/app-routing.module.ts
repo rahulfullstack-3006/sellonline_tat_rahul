@@ -42,6 +42,7 @@ const routes: Routes = [
   {
     path:'leadCreation',
     component:LeadcreationComponent,
+    canActivate:[AuthguardService],
     children:[
       {
         path:'leadCreation',
