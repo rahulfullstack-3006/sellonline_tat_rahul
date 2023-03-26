@@ -11,10 +11,13 @@ import { SisRiderCalculationComponent } from './components/sis-rider-calculation
 import { SisRiderSelectionComponent } from './components/sis-rider-selection/sis-rider-selection.component';
 import { SisSummaryComponent } from './components/sis-summary/sis-summary.component';
 import { SispersonalComponent } from './components/sispersonal/sispersonal.component';
+import { AuthguardService } from './services/authguard.service';
 
 const routes: Routes = [
+  {path:'',pathMatch:'full',redirectTo:'login'},
+  // {path:'leadDashboard',component:LeaddashboardComponent,canActivate:[AuthguardService]},
   {
-    path:'',
+    path:'register',
     component:RegsiterComponent,
     children:[
       {
@@ -49,11 +52,11 @@ const routes: Routes = [
   },
 
   {
-    path:'leadEdit',
+    path:'updateLead/:id',
     component:EditleadComponent,
     children:[
       {
-        path:'leadEdit',
+        path:'updateLead/:id',
         loadChildren:()=>
           import('./components/editlead/editlead.module').then((m)=>m.EditleadModule)
       },  
@@ -66,6 +69,7 @@ const routes: Routes = [
     children:[
       {
         path:'leadDashboard',
+        // canActivate:[AuthguardService],
         loadChildren:()=>
         import('./components/leaddashboard/leaddashboard.module').then((m)=>m.LeaddashboardModule)
       }

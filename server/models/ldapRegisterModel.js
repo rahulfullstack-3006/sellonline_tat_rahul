@@ -546,7 +546,7 @@ module.exports.deleteModel=async function(req,resp){
 
 module.exports.registerusingMongo=async function(req,resp){
   let bcryptPassword=await bcrypt.hash(req.body.password,10);
-  console.log("bcrypt",bcryptPassword);
+  console.log("bcrypt",bcryptPassword);  //email id check --->select query
   let signupSchema=new SignupSchema({
     username:req.body.username,
     email:req.body.email,
@@ -567,18 +567,18 @@ module.exports.registerusingMongo=async function(req,resp){
 
 
 /**************login api using mongodb*********************/
-module.exports.loginusingMongo=async function(req,resp){
+module.exports.loginusingMongo=async function(req,resp){   //need to handle for same username and wrong password enter it will redirect
   try{
     let user =await SignupSchema.find({username:req.body.username})
     console.log("userrrrr",user);;
-    if(user){
-     let result= await bcrypt.compare(req.body.password,user[0].password);
+    if(user.length >0){
+     let result= await bcrypt.compareSync(req.body.password,user[0].password);
      console.log("result",result);
      if(result === true){
       let token=jwt.sign({username:user[0].username,email:user[0].email,password:user[0].password},'secret_key',{
         expiresIn:"24h"
       })
-      console.log("token",token);
+      // console.log("token",token);
       return {username:user[0].username,email:user[0].email,token};
      }
     }else{

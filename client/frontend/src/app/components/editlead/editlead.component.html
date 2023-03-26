@@ -5,14 +5,15 @@
 
 <div class="container">
   <div class="main">
+    <form [formGroup]="editLeadForm" (ngSubmit)="onSubmit()">
     <div class="lead_heading">
      <h2>New Lead Form</h2>
     </div>
 
     <div class="type_insurance">
       <label for="insurance">Type of Insurance </label><br>
-      <input type="radio"  id="individual" value="individual"/>Individual
-      <input type="radio"  id="non-individual" value="non-individual"/>Non-Individual
+      <input type="radio"  id="individual" value="individual" formControlName="insurance_type"/>Individual
+      <input type="radio"  id="non-individual" value="non-individual" formControlName="insurance_type"/>Non-Individual
     </div>
 
     <div class="personal_details">
@@ -22,46 +23,46 @@
     <div class="form_fields"> 
       <div class="user_details">
       <div class="user_inputs">
-        <label for="firstname">FirstName</label><br>
-        <input type="text"  id="firstname" />
+        <label for="first_name">FirstName</label><br>
+        <input type="text"  id="first_name" formControlName="first_name"/>
       </div>
       <div class="user_inputs">
-        <label for="middlename">MiddleName</label><br>
-        <input type="text"  id="middlename" />
+        <label for="middle_name">MiddleName</label><br>
+        <input type="text"  id="middle_name" formControlName="middle_name"/>
       </div>
       <div class="user_inputs">
-        <label for="lastname">LastName</label><br>
-        <input type="text"  id="lastname" />
+        <label for="last_name">LastName</label><br>
+        <input type="text"  id="last_name" formControlName="last_name"/>
       </div>
       </div>
 
       <div class="user_details">
         <div class="user_inputs">
           <label for="dob">Date of Birth</label><br>
-          <input type="date"  id="dob" />
+          <input type="date"  id="dob" formControlName="dob"/>
         </div>
         <div class="user_inputs">
           <label for="email">Email</label><br>
-          <input type="email"  id="email" />
+          <input type="email"  id="email" formControlName="email"/>
         </div>
         <div class="user_inputs">
           <label for="mobile">Mobile</label><br>
-          <input type="text"  id="mobile" />
+          <input type="text"  id="mobile" formControlName="mobile"/>
         </div>
         </div>
 
         <div class="user_details">
           <div class="user_inputs">
             <label for="address">Address</label><br>
-            <input type="text"  id="address" /> 
+            <input type="text"  id="address" formControlName="address"/> 
           </div>
           <div class="user_inputs">
             <label for="state">State</label><br>
-            <input type="text"  id="state" />
+            <input type="text"  id="state" formControlName="state"/>
           </div>
           <div class="user_inputs">
             <label for="city">City</label><br>
-            <input type="text"  id="city" />
+            <input type="text"  id="city" formControlName="city"/>
           </div>
         </div>
         
@@ -70,5 +71,7 @@
     <div class="save_procced">
       <button class="btn btn-primary">Save & Procced</button>
     </div>
+  </form>
   </div>
 </div>
+<!-- <app-productdashboard [parentData]="editToProduct"></app-productdashboard> -->

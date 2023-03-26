@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { MainService } from './services/main.service';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -22,6 +22,8 @@ import { SisRiderSelectionComponent } from './components/sis-rider-selection/sis
 import { SisSummaryComponent } from './components/sis-summary/sis-summary.component';
 import { SisRiderCalculationComponent } from './components/sis-rider-calculation/sis-rider-calculation.component';
 import { MatIconModule } from '@angular/material/icon';
+import { InterceptorService } from './services/interceptor.service';
+import { AuthguardService } from './services/authguard.service';
 
 @NgModule({
   declarations: [
@@ -48,10 +50,16 @@ import { MatIconModule } from '@angular/material/icon';
     MatTabsModule,
     MatIconModule,
     FontAwesomeModule,
-    NgbModule
+    NgbModule,
+  
   ],
-  providers: [{provide:LocationStrategy,useClass:PathLocationStrategy},
-    MainService],
+  providers: [
+    AuthguardService,
+    {provide:LocationStrategy,useClass:PathLocationStrategy},
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
+    MainService,
+    InterceptorService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

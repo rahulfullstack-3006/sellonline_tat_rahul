@@ -10,7 +10,22 @@ module.exports.getLeadDashboardController=async function(req,resp){
   }
   catch(err){
     // resp.send(err)
-  resp.json({status:'false',message:'Error in Lead Fetch',data});
+  resp.json({status:'false',message:'Error in Lead Fetch'});
+
+  }
+}
+
+module.exports.getEachLeadDetailController=async function(req,resp){
+  try{
+   let data=await leadDashboard.getEachLeadDetailModel(req);
+   console.log("data",data);
+  //  resp.send(data)
+  resp.json({status:'true',message:'Fetch lead details based on ID',data});
+
+  }
+  catch(err){
+    // resp.send(err)
+  resp.json({status:'false',message:'Error in Fetch lead details based on ID'});
 
   }
 }
@@ -24,7 +39,7 @@ module.exports.createLeadDashboardController=async function(req,resp){
   }
   catch(err){
     // resp.send(err)
-  resp.json({status:'false',message:'Error in Lead Creation',data});
+  resp.json({status:'false',message:'Error in Lead Creation'});
 
   }
 }
@@ -40,7 +55,7 @@ module.exports.updateLeadDashboardController=async function(req,resp){
   }
   catch(err){
     // resp.send(err)
-  resp.json({status:'false',message:'Error in Lead Updation',data});
+  resp.json({status:'false',message:'Error in Lead Updation'});
 
   }
 }

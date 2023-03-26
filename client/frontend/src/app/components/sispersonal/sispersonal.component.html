@@ -7,26 +7,26 @@
   <div class="main_section">
     <div class="product_heading">
       <div class="product_name">
-        <h3>Tata AIA Life Insurance Saral Jeevan Bima</h3>
+        <h3>{{leadwithProduct.productName}}</h3>
         </div>
         <div class="uin">
-          <p>UIN: 110N160V03</p>
+          <p>{{leadwithProduct.UIN}}</p>
           </div>
           <div class="line_symbol">
             |
           </div>
           <div class="lead_id">
-          <p>LEAD ID: 3647823132301</p>
+          <p>LEAD ID: {{leadwithProduct._id}}</p>
         </div>
         </div>
         <div>
-          <form>
+          <form [formGroup]="sisPersonalForm" (ngSubmit)="onSubmit()">
             <div class="lead_name_heading">
-              <h3>Hello <b>Mr. UAT TEST</b>, Welcome to Tata AIA!</h3>
+              <h3>Hello <b>Mr. {{leadwithProduct.first_name}} {{leadwithProduct.middle_name}}  {{leadwithProduct.lasst_name}}</b>, Welcome to Tata AIA!</h3>
             </div>
             <div class="lead_dynamic">
-              <p>Based on the information shared by your Financial Advisor, We understand that you were born on <span> 1st January 1983</span>  and currently reside in 
-                <span>DHJDGD, JKFJF, MUMBAI, 400001, MAHARASHTRA.</span> You can be reached at <span>+91 9874561236 </span> and <span>uattestcombo123@gmail.com.</span> 
+              <p>Based on the information shared by your Financial Advisor, We understand that you were born on <span> {{leadwithProduct.dob | date: 'dd/MM/yyyy' }}</span>  and currently reside in 
+                <span>{{leadwithProduct.address}}, {{leadwithProduct.state}}, {{leadwithProduct.city}}.</span> You can be reached at <span>+91 {{leadwithProduct.mobile}} </span> and <span>{{leadwithProduct.email}}.</span> 
               </p>
             </div>
             <div class="process_simpler">
@@ -34,7 +34,7 @@
             </div>
             <div class="self_drop_down">
               <span>You are buying the policy for</span>
-              <select class="self_child">
+              <select class="self_child" formControlName="buying_for">
                 <option value="self" selected>Self</option>
                 <option>Spouse</option>
                 <option>Child(major)</option>
@@ -44,7 +44,7 @@
 
             <div class="occupation_dropdown">
               <span>Your occupation is</span>
-              <select>
+              <select formControlName="occupation">
                 <option value="" disabled></option>
                 <option>Agriculturist/Farmer</option>
                 <option>Business Owner</option>
@@ -61,8 +61,8 @@
             </div>
 
             <div class="proof_select">
-              <label for="">Age Proof for UAT TEST</label><br>
-              <select>
+              <label for="">Age Proof for {{leadwithProduct.first_name}} {{leadwithProduct.middle_name}}  {{leadwithProduct.lasst_name}}</label><br>
+              <select formControlName="age_proof">
                 <option value="" selected></option>
                 <option>Aadhar ID Card - Non Standard</option>
                 <option>Aadhar ID Card - Standard</option>
@@ -74,7 +74,7 @@
             <div class="education_personal_proof">
               <div class="user_inputs">
                 <label>Highest Education Qualification</label><br>
-                <select>
+                <select formControlName="education_qualification">
                   <option value="" selected></option>
                   <option>Below SSC</option>
                   <option>10th</option>
@@ -83,30 +83,30 @@
                 </select>
               </div>
               <div class="user_inputs">
-                <label for="annual">Annual Income of UAT TEST</label><br>
-                <input type="text"  id="annual"/><br>
+                <label for="annual">Annual Income of {{leadwithProduct.first_name}} {{leadwithProduct.middle_name}}  {{leadwithProduct.lasst_name}}</label><br>
+                <input type="text"  id="annual" formControlName="annual_income"/><br>
                 <p>Annual Income declared should be part of Earned Income only.</p>
               </div>
               <div class="user_inputs">
-                <label for="pan_number">Pan Number of UAT TEST</label><br>
-                <input type="text"  id="pan_number"/>
+                <label for="pan_number">Pan Number of {{leadwithProduct.first_name}} {{leadwithProduct.middle_name}}  {{leadwithProduct.lasst_name}}</label><br>
+                <input type="text"  id="pan_number" formControlName="pan_number"/>
               </div>
             </div>
             <div class="tabacco_radio">
               <label>Do you consume tobacco?</label><br>
               <label class="switch">
-                <input type="checkbox">
+                <input type="checkbox" formControlName="tobacco_radio">
                 <span class="slider round"></span>
               </label>
             </div>
             <div class="nominee_name_real">
               <div class="user_inputs">
                 <label for="nominee">Nominee Name</label><br>
-                <input type="text"  id="nominee"/><br>
+                <input type="text"  id="nominee" formControlName="nominee_name"/><br>
               </div>
               <div class="user_inputs">
                 <label>Nominee relationship with Life Assured</label><br>
-                <select>
+                <select formControlName="nominee_relationship">
                   <option value="" selected></option>
                   <option>Brother</option>
                   <option>Cousin</option>
@@ -118,7 +118,7 @@
 
             <div class="gst_number">
               <div class="gst_check">
-                <input type="checkbox"/>
+                <input type="checkbox" formControlName="gst_check"/>
               </div>
               <div class="gst_text">
               <h4>I have a GST number</h4>
@@ -127,7 +127,7 @@
 
             <div class="other_life_insur">
               <div class="existing_check">
-                <input type="checkbox"/>
+                <input type="checkbox" formControlName="existing_check"/>
               </div>
               <div class="existing_text">
               <h4> I have an existing life insurance policy/or have applied any simultaneous applications with Other Life Insurance Company</h4>
@@ -144,7 +144,7 @@
             </div>
 
             <div class="let_do_this">
-              <button class="btn btn-primary" (click)="letDoThis()">LET'S DO THIS</button>
+              <button class="btn btn-primary">LET'S DO THIS</button>
             </div>
           </form>
 

@@ -1,9 +1,23 @@
 var BasicDetails=require('../models/basicDetailsSchema');
+var moment=require('moment');
 
 
 module.exports.getLeadDashboardModel=async function(req,resp){
   try{
-    let data =await BasicDetails.find();
+    let data =await BasicDetails
+    .find()
+    .sort({_id:-1});
+    console.log("data for try",data);
+    return data;
+  }
+  catch(err){
+    return err
+  }
+}
+
+module.exports.getEachLeadDetailModel=async function(req,resp){
+  try{
+    let data =await BasicDetails.findOne({_id:req.params.id});
     console.log("data for try",data);
     return data;
   }
@@ -13,11 +27,17 @@ module.exports.getLeadDashboardModel=async function(req,resp){
 }
 
 module.exports.createLeadDashboardModel=async function(req,resp){
+  console.log("call huha create Lead");
+  let dobObj=req.body.dob;
+  console.log("dobObj",dobObj);
+  // let leadDate=dobObj.moment().format("MMM DO YY");
+  // console.log("leadDate",leadDate);
   let basicDetails=new BasicDetails({
     address:req.body.address,
-    password:req.body.password,
+    // password:req.body.password,
+    state:req.body.state,
     city:req.body.city,
-    dob:req.body.dob,
+    dob:dobObj,
     email:req.body.email,
     first_name:req.body.first_name,
     middle_name:req.body.middle_name,
@@ -32,6 +52,7 @@ module.exports.createLeadDashboardModel=async function(req,resp){
     return data;
   }
   catch(err){
+    console.log("error in catch",err);
     return err
   }
 }
@@ -44,7 +65,7 @@ module.exports.updateLeadDashboardModel=async function(req,resp){
     let data=await BasicDetails.findOneAndUpdate({_id:req.params.id},{
       $set:{
         address:req.body.address,
-        password:req.body.password,
+        state:req.body.state,
         city:req.body.city,
         dob:req.body.dob,
         email:req.body.email,

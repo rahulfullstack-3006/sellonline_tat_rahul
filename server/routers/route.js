@@ -17,9 +17,10 @@ router.post('/ldapLogin',registerLdap.ldapLogin);
 router.post('/updateLDAP',registerLdap.updateLDAP);
 router.post('/deleteLDAP',registerLdap.deleteLDAP);
 router.get('/leadDashboard',leadDashboard.getLeadDashboardController);
-router.post('/leadCreate',checkAuth,leadDashboard.createLeadDashboardController);
+router.post('/leadCreate',leadDashboard.createLeadDashboardController);
 router.put('/updateLead/:id',leadDashboard.updateLeadDashboardController);
 router.delete('/deleteLead/:id',leadDashboard.deleteLeadDashboardController);
+router.get('/getEachLeadDetails/:id',leadDashboard.getEachLeadDetailController)
 
               /***register and login using mongo **/
 router.post('/registerusingMongo',registerLdap.registerusingMongoControll);
