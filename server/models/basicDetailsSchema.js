@@ -11,7 +11,8 @@ const basicDetailsSchema = new Schema({
   last_name: String,
   middle_name: String,
   mobile: Number,
-  state:String
+  state:String,
+  leadId:String
   
 });
 

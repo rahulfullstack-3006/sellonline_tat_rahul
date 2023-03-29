@@ -10,7 +10,7 @@
        <h2>Lead</h2>
       </div>
       <div class="lead_search_create">
-        <input type="search" id="search" placeholder="Searh here.">
+        <input type="text" id="search" placeholder="Searh here." (input)="onSearch()" [(ngModel)]="searchText">
         <fa-icon [icon]="faSearch"></fa-icon>
         <button class="btn btn-primary" (click)="createNewLead()">+ Create New Lead</button>
         <button class="btn btn-primary">Generate Link</button>
@@ -31,7 +31,7 @@
                     <div class="primary">
                       <h2>{{item.first_name}} {{item.middle_name}}  {{item.last_name}}</h2>
                       <p>Lead Status: New Status</p>
-                      <p>Lead id:{{item._id}}</p>
+                      <p>Lead id:{{item.leadId}}</p>
                       <p>Created on {{item.createdAt}}</p>
                     </div>
                     <div class="secondary">           

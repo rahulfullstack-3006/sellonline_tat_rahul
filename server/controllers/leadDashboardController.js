@@ -18,7 +18,7 @@ module.exports.getLeadDashboardController=async function(req,resp){
 module.exports.getEachLeadDetailController=async function(req,resp){
   try{
    let data=await leadDashboard.getEachLeadDetailModel(req);
-   console.log("data",data);
+  //  console.log("data",data);
   //  resp.send(data)
   resp.json({status:'true',message:'Fetch lead details based on ID',data});
 
@@ -33,7 +33,7 @@ module.exports.getEachLeadDetailController=async function(req,resp){
 module.exports.createLeadDashboardController=async function(req,resp){
   try{
    let data=await leadDashboard.createLeadDashboardModel(req);
-   console.log("data",data);
+  //  console.log("data",data);
   //  resp.send(data)
   resp.json({status:'true',message:'Lead Created Successfully',data});
   }
@@ -72,6 +72,21 @@ module.exports.deleteLeadDashboardController=async function(req,resp){
   catch(err){
     // resp.send(err)
   resp.json({status:'false',message:'Error in Lead Deletion',data});
+
+  }
+}
+
+module.exports.searchLeadDashboardController=async function(req,resp){
+  try{
+   let data=await leadDashboard.searchLeadDashboardModel(req);
+   console.log("data",data);
+  //  resp.send(data)
+  resp.json({status:'true',message:'Lead Search Successfully',data});
+
+  }
+  catch(err){
+    // resp.send(err)
+  resp.json({status:'false',message:'Error in Lead search',data});
 
   }
 }

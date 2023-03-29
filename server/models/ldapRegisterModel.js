@@ -567,7 +567,7 @@ module.exports.registerusingMongo=async function(req,resp){
       return err
     }
   }else{
-    return {status:'false',message:'Email Already exits'} 
+    return {status:403,message:'Email Already exits'} 
   }
 
 }
@@ -583,15 +583,17 @@ module.exports.loginusingMongo=async function(req,resp){   //need to handle for 
     if(user.length >0){
      let result= await bcrypt.compareSync(req.body.password,user[0].password);
      console.log("result",result);
-     if(result === true){
+     if(result == true){
       let token=jwt.sign({username:user[0].username,email:user[0].email,password:user[0].password},'secret_key',{
         expiresIn:"24h"
       })
-      // console.log("token",token);
-      return {username:user[0].username,email:user[0].email,token};
+      return {status:200,message:'Successfully login',username:user[0].username,email:user[0].email,token};
      }
+     else{
+      return {status:401,message:'Invalid Credentials',username:'',email:''};
+    }
     }else{
-      console.log("user not login");
+      return {status:409,message:"User not exists",username:"",email:"",token:''};
     }
   }
   catch(err){

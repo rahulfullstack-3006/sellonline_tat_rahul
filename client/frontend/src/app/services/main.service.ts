@@ -12,7 +12,8 @@ export class MainService {
   leadDashboardURL='/leadDashboard';
   leadCreateUrl='/leadCreate';
   eachLeadDetailsURL='/getEachLeadDetails';
-  updateLeadURL='/updateLead'
+  updateLeadURL='/updateLead';
+  searchURL='/search';
 
 
   // headers=header || {};
@@ -55,6 +56,10 @@ export class MainService {
 
   public updateLead(id:any,body:any){ 
     return this.http.put(this.APIURL + this.updateLeadURL + '/' +id,body,{headers:this.headerObj()});
+  }
+
+  public searchLeadDetails(key:any){
+    return this.http.get(this.APIURL + this.searchURL + '/' +key,{headers:this.headerObj()});
   }
 
   // public login(url:any,body:any,header:any){

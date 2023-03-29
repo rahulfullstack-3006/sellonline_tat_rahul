@@ -25,6 +25,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { InterceptorService } from './services/interceptor.service';
 import { AuthguardService } from './services/authguard.service';
 import { TokenInterceptor } from './services/token.interceptor';
+import { LoaderComponent } from './components/loader/loader.component';
+import { LoaderService } from './services/loader.service';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { TokenInterceptor } from './services/token.interceptor';
     SisRiderSelectionComponent,
     SisSummaryComponent,
     SisRiderCalculationComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,8 @@ import { TokenInterceptor } from './services/token.interceptor';
     // { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
     MainService,
     TokenInterceptor,
-    AuthguardService
+    AuthguardService,
+    LoaderService
     // InterceptorService
   ],
   bootstrap: [AppComponent]

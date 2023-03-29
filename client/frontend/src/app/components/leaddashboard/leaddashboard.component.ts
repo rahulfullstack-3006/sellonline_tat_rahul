@@ -16,6 +16,7 @@ export class LeaddashboardComponent implements OnInit {
   faSearch=faSearch;
   allLeadCardDetails:any;
   eachItemId:any
+  searchText:any=''
   // leadCardDetails:any=[
   // {"id":1,"lead_name":"ABC","lead_id":"5993323137605","created_on":"23 February 2023","mobile_no":"9874561236","email":"abc12@gmail.com"},
   // {"id":2,"lead_name":"ABCD","lead_id":"5993323137606","created_on":"23 February 2023","mobile_no":"9823561236","email":"cd12@gmail.com"},
@@ -48,6 +49,18 @@ export class LeaddashboardComponent implements OnInit {
       }
     })
     
+  }
+
+  onSearch(){
+    this.mainService.searchLeadDetails(this.searchText).subscribe({
+      next:(searchResult)=>{
+        console.log("searchResult",searchResult);   
+      },
+      error:(err)=>{
+        console.log("err",err);
+        
+      }
+    })
   }
 
   createNewLead(){

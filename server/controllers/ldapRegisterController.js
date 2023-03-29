@@ -54,11 +54,11 @@ module.exports.registerusingMongoControll=async function(req,resp){
   try{
   let data=await ldapRegisterController.registerusingMongo(req);
   console.log("dataforldap",data);
-  resp.json({status:'true',message:'Successfully Register',data});
+  resp.json({status:200,message:'Successfully Register',data});
   }
   catch(error){
     console.log("ldapRegisterController",error);
-    resp.json({status:'false',message:'Not Register',data:''});
+    resp.json({status:403,message:'Not Register',data:''});
   }
 }
 
@@ -69,14 +69,43 @@ module.exports.registerusingMongoControll=async function(req,resp){
 module.exports.loginusingMongoControll=async function(req,resp){
 
   try{
-  let data=await ldapRegisterController.loginusingMongo(req);
-  console.log("dataforldap",data);
-  resp.json({status:'true',message:'Successfully Login',data});
-  }
-  catch(error){
-    console.log("ldapRegisterController",error);
-    resp.json({status:'false',message:'Not Login',data:''});
-  }
+    let data=await ldapRegisterController.loginusingMongo(req);
+    console.log("dataforldap",data);
+    resp.json ({data})
+    }
+    catch(error){
+      console.log("ldapRegisterController",error);
+      resp.json ({error})
+    }
+
+  // try{
+  // let data=await ldapRegisterController.loginusingMongo(req);
+  // console.log("dataforldap",data);
+  // if(!(isEmpty(data.token))){
+  //   console.log("data.token",data.token);
+  // resp.json({status:'true',message:'Successfully Login',data});
+  // }else{
+  //   console.log("data.token inside else",data.token);
+  //   resp.json({status:'false',message:'Not Login new condition',data:''});
+  // }
+  // }
+  // catch(error){
+  //   console.log("ldapRegisterController",error);
+  //   // resp.json({status:'false',message:'Not Login',data:''});
+  // }
 }
 
 /**************login api using mongodb end*********************/
+function isEmpty(returnData){
+  console.log("returnData",returnData);
+ if(returnData == null){
+  return true
+ }
+ else if(returnData == ""){
+  return true
+ }
+ else if(returnData == undefined){
+  return true
+ }
+ return false;
+}

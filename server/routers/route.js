@@ -20,7 +20,8 @@ router.get('/leadDashboard',leadDashboard.getLeadDashboardController);
 router.post('/leadCreate',leadDashboard.createLeadDashboardController);
 router.put('/updateLead/:id',leadDashboard.updateLeadDashboardController);
 router.delete('/deleteLead/:id',leadDashboard.deleteLeadDashboardController);
-router.get('/getEachLeadDetails/:id',leadDashboard.getEachLeadDetailController)
+router.get('/getEachLeadDetails/:id',leadDashboard.getEachLeadDetailController);
+router.get('/search/:key',leadDashboard.searchLeadDashboardController);
 
               /***register and login using mongo **/
 router.post('/registerusingMongo',registerLdap.registerusingMongoControll);
